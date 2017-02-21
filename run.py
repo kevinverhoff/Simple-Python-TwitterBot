@@ -26,7 +26,7 @@ class listener(StreamListener):
 
             #banned handles and words goes in here
             banned_accs =  [' ' ,' ']
-            banned_words = [' ' ,' ']
+            banned_words = ['Dirt Bike' ,'ATV','motorcycle']
 
             if not any(a_acc == screen_name.lower() for a_acc in whitelist_acc):
                 if not any(acc == screen_name.lower() for acc in banned_accs):
