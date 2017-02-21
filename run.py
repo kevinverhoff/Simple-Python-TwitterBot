@@ -19,15 +19,15 @@ class listener(StreamListener):
             tweet_text = raw_data.lower().split('"text":"')[1].split('","source":"')[0].replace(",", "") #tweet's text
             screen_name = raw_data.lower().split('"screen_name":"')[1].split('","location"')[0].replace(",", "") #tweet's authors screen name
             tweet_sid = raw_data.split('"id":')[1].split('"id_str":')[0].replace(",", "") #tweet's id
-			
+
 			#whitelist handles and words goes in here
-            whitelist_acc = [' ', ' ']
-            whitelist_words = [' ', ' ']
-			
+            whitelist_acc = ['', '']
+            whitelist_words = ['#Cycling', '']
+
             #banned handles and words goes in here
-            banned_accs =  [' ' ,' ']            
+            banned_accs =  [' ' ,' ']
             banned_words = [' ' ,' ']
-			
+
             if not any(a_acc == screen_name.lower() for a_acc in whitelist_acc):
                 if not any(acc == screen_name.lower() for acc in banned_accs):
                     if not any(a_wrds in screen_name.lower() for a_wrds in whitelist_words):
@@ -35,17 +35,17 @@ class listener(StreamListener):
                             #call what u want to do here
                             #for example :
                             #fav(tweet_sid)
-                            #retweet(tweet_sid)
+                            retweet(tweet_sid)
                     else:
                         #call what u want to do here
                         #for example :
                         #fav(tweet_sid)
-                        #retweet(tweet_sid)
+                        retweet(tweet_sid)
             else:
                 #call what u want to do here
                 #for example :
                 #fav(tweet_sid)
-                #retweet(tweet_sid)
+                retweet(tweet_sid)
             return True
         except Exception as e:
             print(str(e)) # prints the error msg, if u dont want it comment it out
@@ -74,8 +74,8 @@ def fav(tweet_sid):
         print(str(e))
         pass
 
-track_words = [" "," "," "]
-follow_acc = ['20536157',"20573247"] #retweets every tweet from this accounts, handles converted to ids 
+track_words = ['NJCycling','NJ Cycling','NewJersey Cycling','NJ Bike','NJBike'] #Whatever you want to retweet should go here.
+follow_acc = ['19401785'] #retweets every tweet from this accounts, handles converted to ids
 
 print("Running...")
 try:
